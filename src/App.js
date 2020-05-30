@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Shop from './containers/Shop/Shop';
+import DeviceDetails from './components/DeviceDetails/DeviceDetails';
+
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <header className="container text-white">
+          <h4 className="py-2">
+            <Link to="/">
+              Shop
+            </Link>
+          </h4>
+        </header>
+        <div className="App">
+        <Switch>
+          <Route exact path="/" component={Shop} />
+          <Route path="/device/:id" component={DeviceDetails} />
+        </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
