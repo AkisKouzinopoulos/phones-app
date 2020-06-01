@@ -39,13 +39,13 @@ class DeviceDetails extends Component {
     return (
       <div className="device"
       >
+        <h4>
+          {device.description}
+        </h4>
         <div className='device-img'>
           <img src={device.imageFront} alt={device.extraDescription} />
         </div>
         <div className="device-info">
-          <h4>
-            {device.description}
-          </h4>
           <p className="device-price">Free or {device.priceFrom} one-off cost</p>
           <p className="device-rating"></p>
           <p className="device-logo">{device.manufacturer}</p>

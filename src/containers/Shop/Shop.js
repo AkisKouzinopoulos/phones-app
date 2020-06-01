@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
 
 import DeviceList from '../../components/DeviceList/DeviceList';
+import Sorting from '../../components/Sorting/Sorting';
 
 import './Shop.css';
 
 class Shop extends Component {
 	state = {
-		devices : [],
+		devices: [],
+		sortedDevices: [],
+		orderDirection: 'nameAsc',
+		orderBy: ''
 		// selectedDevice: ''
 	}
-
-	// constructor() {
-	// 	super();
-	// 	this.state = {
-	// 		devices: [],
-	// 		selectedDevice: ''
-	// 	};
-
-	// 	// this.deleteAppointment = this.deleteAppointment.bind(this);
-	// 	// this.testMe = this.testMe.bind(this);
-
-	// }
-
-	// this.getDevices = this.getDevices.bind(this);
 
 	getDevices() {
 		fetch('/phonesData.json')
@@ -34,7 +24,8 @@ class Shop extends Component {
 				})
 
 				this.setState({
-					devices
+					devices,
+					sortedDevices: devices
 				});
 
 			});
@@ -45,20 +36,28 @@ class Shop extends Component {
 	}
 
 	render() {
+
 		return (
 			<div className="shop">
 				<section className="devices">
-					<DeviceList
+					<div>Sorting options:</div>
+					<Sorting
 						devices={this.state.devices}
-						// onDeviceSelection={deviceId => this.props.history.push(`/device/${deviceId}`)}
+						// devicesOrder={order => this.setState({ orderDirection: order.orderDirection, })}
+						devicesSorting={devicesOrderObj => this.setState({
+							sortedDevices: devicesOrderObj.tempDevices,
+							orderDirection: devicesOrderObj.orderDirection,
+							orderBy: devicesOrderObj.orderBy
+						})}
 					/>
 				</section>
-				{/* <section>
-                    <FullPost />
-                </section>
-                <section>
-                    <NewPost />
-                </section> */}
+				<section className="devices">
+					<DeviceList
+						// devices={this.state.devices}
+						devices={this.state.sortedDevices}
+					// onDeviceSelection={deviceId => this.props.history.push(`/device/${deviceId}`)}
+					/>
+				</section>
 			</div>
 		);
 	}
