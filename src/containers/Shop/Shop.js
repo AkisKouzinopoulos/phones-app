@@ -50,7 +50,7 @@ class Shop extends Component {
 				<section className="devices">
 					<DeviceList
 						devices={this.state.devices}
-						onDeviceSelection={deviceId => this.props.history.push(`/device/${deviceId}`)}
+						// onDeviceSelection={deviceId => this.props.history.push(`/device/${deviceId}`)}
 					/>
 				</section>
 				{/* <section>

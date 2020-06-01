@@ -16,10 +16,10 @@ class App extends Component {
           </h4>
         </header>
         <div className="App">
-        <Switch>
-          <Route exact path="/" component={Shop} />
-          <Route path="/device/:id" component={DeviceDetails} />
-        </Switch>
+          <Switch>
+            <Route exact path="/" component={Shop} />
+            <Route path="/device/:id" component={DeviceDetails} />
+          </Switch>
         </div>
       </Router>
     );
