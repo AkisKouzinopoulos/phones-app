@@ -5,27 +5,27 @@ import DeviceList from '../../components/DeviceList/DeviceList';
 import './Shop.css';
 
 class Shop extends Component {
-	// state = {
-	// 	devices : [],
-	// 	selectedDevice: ''
-	// }
-
-	constructor() {
-		super();
-		this.state = {
-			devices: [],
-			selectedDevice: ''
-		};
-
-		// this.deleteAppointment = this.deleteAppointment.bind(this);
-		// this.testMe = this.testMe.bind(this);
-
+	state = {
+		devices : [],
+		// selectedDevice: ''
 	}
+
+	// constructor() {
+	// 	super();
+	// 	this.state = {
+	// 		devices: [],
+	// 		selectedDevice: ''
+	// 	};
+
+	// 	// this.deleteAppointment = this.deleteAppointment.bind(this);
+	// 	// this.testMe = this.testMe.bind(this);
+
+	// }
 
 	// this.getDevices = this.getDevices.bind(this);
 
 	getDevices() {
-		fetch('./phonesData.json')
+		fetch('/phonesData.json')
 			.then(response => response.json())
 			.then(result => {
 
