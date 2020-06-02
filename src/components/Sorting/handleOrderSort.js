@@ -10,7 +10,7 @@ const sortObjBy = (valueToShort, reverse, primer) => {
   reverse = !reverse ? 1 : -1;
 
   return function (a, b) {
-    return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+    return (a = key(a), b = key(b), reverse * ((a > b) - (b > a)));
   }
 }
 

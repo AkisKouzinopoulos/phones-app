@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import DeviceList from '../../components/DeviceList/DeviceList';
 import Sorting from '../../components/Sorting/Sorting';
+import Filtering from '../../components/Filtering/Filtering';
 
 import './Shop.css';
 
@@ -41,6 +42,10 @@ class Shop extends Component {
 			<div className="shop">
 				<section className="devices">
 					<div>Sorting options:</div>
+					<Filtering
+						devices={this.state.devices}
+						onFilterApply={filteredDevices => this.setState({ sortedDevices: filteredDevices})}
+					/>
 					<Sorting
 						devices={this.state.devices}
 						// devicesOrder={order => this.setState({ orderDirection: order.orderDirection, })}
