@@ -1,6 +1,7 @@
 import React from 'react';
 
 import FilterCheckboxes from './FilterCheckboxes/FilterCheckboxes'
+import FilterPrice from '../../components/Filtering/FilterPrice/FilterPrice';
 
 const filtering = (props) => {
 
@@ -9,9 +10,14 @@ const filtering = (props) => {
 
   let tempDevices = devices;
   let checkboxesArr = [];
+  let priceFrom = 0;
 
   const findSelectedFilters = (obj) => {
     checkboxesArr = obj;
+  }
+
+  const findPriceFilter = (value) => {
+    priceFrom = value;
   }
 
   const handleFiltering = () => {
@@ -19,8 +25,12 @@ const filtering = (props) => {
       return (
         tempDevices = tempDevices
           .filter(eachItem => {
+            console.log('aa', priceFrom);
+
             return (
               eachItem['filterfeatures'][item]
+              &&
+              eachItem['priceFrom'] > priceFrom
             )
           })
       )
@@ -33,6 +43,9 @@ const filtering = (props) => {
     <div>
       <FilterCheckboxes
         onFilter={(obj) => findSelectedFilters(obj)}
+      />
+      <FilterPrice
+        onPriceFilter={(value) => findPriceFilter(value)}
       />
       <button
         className="button-filter"

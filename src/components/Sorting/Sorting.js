@@ -8,8 +8,6 @@ const sorting = (props) => {
   const { orderDirection } = props;
   const { devicesSorting } = props;
 
-  // console.log('d', devices);
-
 
   return (
     <div>
