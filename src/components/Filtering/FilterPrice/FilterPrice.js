@@ -4,7 +4,7 @@ import './FilterPrice.css';
 
 class FilterPrice extends Component {
 
-  state = { // Define the filters i want ot have in the page so i create the checkboxes
+  state = {
     price: 0
   }
 
@@ -25,7 +25,7 @@ class FilterPrice extends Component {
       price: value
     });
 
-    this.props.onPriceFilter(value); //Pass the price
+    this.props.onPriceFilter(this.state.price); //Pass the price
   }
 
   render() {

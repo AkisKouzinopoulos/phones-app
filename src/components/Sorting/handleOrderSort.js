@@ -14,31 +14,29 @@ const sortObjBy = (valueToShort, reverse, primer) => {
   }
 }
 
-const handleOrderSort = ({ devices, orderBy, orderDirection }) => {
-
+const handleOrderSort = ({ tempDevices, orderBy, orderDirection }) => {
   let sortedObj = {};
-
-  let tempDevices = Array.from(devices);
+  let sortedTempDevices = Array.from(tempDevices);
 
   switch (orderDirection) {
     case 'nameAsc':
-      tempDevices.sort(sortObjBy(orderBy, false, (a) => a.toUpperCase()));
+      sortedTempDevices.sort(sortObjBy(orderBy, false, (a) => a.toUpperCase()));
       break;
     case 'nameDesc':
-      tempDevices.sort(sortObjBy(orderBy, true, (a) => a.toUpperCase()));
+      sortedTempDevices.sort(sortObjBy(orderBy, true, (a) => a.toUpperCase()));
       break;
     case 'priceAsc':
-      tempDevices.sort(sortObjBy(orderBy, false, parseInt));
+      sortedTempDevices.sort(sortObjBy(orderBy, false, parseInt));
       break;
     case 'priceDesc':
-      tempDevices.sort(sortObjBy(orderBy, true, parseInt));
+      sortedTempDevices.sort(sortObjBy(orderBy, true, parseInt));
       break;
     default: // is better to use switc default instead of "case 'default' " to be as a fallback
-      tempDevices = devices;
+      sortedTempDevices = tempDevices;
   }
 
   sortedObj = {
-    tempDevices,
+    sortedTempDevices,
     orderDirection,
     orderBy
   }

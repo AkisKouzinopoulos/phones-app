@@ -7,35 +7,40 @@ const filtering = (props) => {
 
   const { devices } = props;
   const { onFilterApply } = props;
+  const { priceFilter } = props;
+  const { onPriceFilter } = props;
 
   let tempDevices = devices;
   let checkboxesArr = [];
-  let priceFrom = 0;
 
   const findSelectedFilters = (obj) => {
     checkboxesArr = obj;
   }
 
   const findPriceFilter = (value) => {
-    priceFrom = value;
+    onPriceFilter(value);
   }
 
   const handleFiltering = () => {
-    checkboxesArr.map(item => {
-      return (
+
         tempDevices = tempDevices
           .filter(eachItem => {
-            console.log('aa', priceFrom);
-
             return (
-              eachItem['filterfeatures'][item]
-              &&
-              eachItem['priceFrom'] > priceFrom
+              eachItem['priceFrom'] > priceFilter
             )
           })
-      )
-    });
-    // console.log('temp', tempDevices);
+
+        checkboxesArr.map(item => {
+          return (
+            tempDevices = tempDevices
+              .filter(eachItem => {
+                return (
+                  eachItem['filterfeatures'][item]
+                )
+              })
+          )
+        });
+
     return tempDevices;
   }
 

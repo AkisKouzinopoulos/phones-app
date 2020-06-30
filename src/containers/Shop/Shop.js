@@ -45,12 +45,15 @@ class Shop extends Component {
 					<Filtering
 						devices={this.state.devices}
 						onFilterApply={filteredDevices => this.setState({ sortedDevices: filteredDevices})}
+						priceFilter={this.state.price}
+						onPriceFilter={price => this.setState({price})}
 					/>
 					<Sorting
 						devices={this.state.devices}
+						tempDevices={this.state.sortedDevices}
 						// devicesOrder={order => this.setState({ orderDirection: order.orderDirection, })}
 						devicesSorting={devicesOrderObj => this.setState({
-							sortedDevices: devicesOrderObj.tempDevices,
+							sortedDevices: devicesOrderObj.sortedTempDevices,
 							orderDirection: devicesOrderObj.orderDirection,
 							orderBy: devicesOrderObj.orderBy
 						})}
